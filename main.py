@@ -1,18 +1,23 @@
 # file: main.py
-
 import json
 
-#The genes will be indexed with Gene ID
+#PLAN:
+#The genes will be indexed and referenced with Gene ID
 
 
 #ID Search
+def IDsearch(args):
+
+    geneIDList = []
+
+    geneIDList.append()
+
+    for p in geneIDList: print p
 
 
-def search(args):
-    print json.dumps({'obj': 1, 'args': args})
-    print "--- ++"
-    print json.dumps({'obj': 2, 'args': args})
 
+
+#ID Search Functions
 def search(args):
 
 
