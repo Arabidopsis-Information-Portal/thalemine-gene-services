@@ -35,6 +35,8 @@ def IDsearch(args):
 #ID Search - Gene ID
 def searchGeneID(args):
 
+#START COPIED CODE
+
     # Get a new query on the class (table) you will be querying:
     query = service.new_query("Gene")
 
@@ -46,6 +48,8 @@ def searchGeneID(args):
 
     for row in query.rows():
         print row["primaryIdentifier"]
+
+#END COPIED CODE
 
 
 #
