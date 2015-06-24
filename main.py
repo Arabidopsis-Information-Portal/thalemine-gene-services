@@ -4,37 +4,13 @@ import json
 from intermine.webservice import Service
 service = Service("https://apps.araport.org:443/thalemine/service")
 
-
-
 #TODO
 #The genes will be indexed and referenced with Gene ID
 
 #ID Search
-def idSearch():
-
-    geneID =
-
-    #adding the ID search to this list of Gene IDs
-    geneIDList = searchGeneID()
-
-
-    print geneIDList
-
-
-
-    print "END NOW"
-
+def returnInfo():
     #TODO
-    #Make sure duplicates in the list are removed.
-    #maybe use the count() method?
-
-
-
-
-
-#TODO
-#make this method return the list, and send it to a print method
-#share the print method with the keyword search
+    #this function will look at the geneID from the search and return the basic info of that geneID
 
 
 #ID Search Functions
@@ -58,8 +34,16 @@ def searchGeneID(arg):
     return geneID
 
 
-
-
-
 #TODO
 #Keyword Search
+def searchKeyword(arg):
+
+    text = str(arg)
+
+    #defalt value if there is no match
+    geneID = "0"
+
+    #TODO
+    #keyword search code...
+
+    return geneID
