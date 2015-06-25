@@ -43,12 +43,33 @@ def searchGeneID(arg):
 #Keyword Search
 def searchKeyword(arg):
 
+    results = []
+
     text = str(arg)
 
     #default value if there is no match
     geneID = "0"
 
+    query = service.new_query("Gene")
+
+    # The view specifies the output columns
+    query.add_view(
+        "briefDescription", "symbol", "secondaryIdentifier", "primaryIdentifier",
+        "name", "length", "curatorSummary", "computationalDescription"
+    )
+
+    for row in query.rows():
+        if (text in row["briefDescription"]) or (text in row["symbol"]) or
+        (text in row["secondaryIdentifier"]) or (text in row["primaryIdentifier"])or
+        (text in row["name"]) or (text in row["length"]) or (text in row["curatorSummary"]) or
+        (text in row["computationalDescription"]):
+            results.extend(row["primaryIdentifier"])
+
     #TODO
     #keyword search code...
 
     return geneID
+
+    #have this function make a list of the geneid. then use a for loop to send each value to the return info function
+
+#return json.dumps(variable)
