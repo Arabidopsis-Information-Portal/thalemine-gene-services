@@ -4,22 +4,29 @@ import json
 from intermine.webservice import Service
 service = Service("https://apps.araport.org:443/thalemine/service")
 
-#TODO
-#The genes will be indexed and referenced with Gene ID
+#recieves a GeneID from the search and returns a briefDescription
+def returnInfo(id):
+#this function will look at the geneID from the search and return the basic info of that geneID
 
-#ID Search
-def returnInfo():
-    #TODO
-    #this function will look at the geneID from the search and return the basic info of that geneID
+    query = service.new_query("Gene")
 
+    # The view specifies the output columns
+    query.add_view("primaryIdentifier", "briefDescription")
 
-#ID Search Functions
+    print "Brief Description of %s:" %id
+
+    for row in query.rows():
+        if id == "0":
+            print "There is no such Gene ID."
+        elif id == row["primaryIdentifier"]:
+            print row["briefDescription"]
+
 #ID Search - Gene ID
 def searchGeneID(arg):
 
     text = str(arg)
 
-    #defalt value if there is no match
+    #default value if there is no match
     geneID = "0"
 
     query = service.new_query("Gene")
@@ -27,12 +34,10 @@ def searchGeneID(arg):
     query.add_sort_order("Gene.primaryIdentifier", "ASC")
 
     for row in query.rows():
-        #print row["primaryIdentifier"]
         if text == row["primaryIdentifier"]:
             geneID = text
 
-    return geneID
-
+    returnInfo(geneID)
 
 #TODO
 #Keyword Search
@@ -40,7 +45,7 @@ def searchKeyword(arg):
 
     text = str(arg)
 
-    #defalt value if there is no match
+    #default value if there is no match
     geneID = "0"
 
     #TODO
