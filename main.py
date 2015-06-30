@@ -8,11 +8,9 @@ query.add_view(
     "length", "primaryIdentifier", "secondaryIdentifier", "symbol"
 )
 
-#function used to test code
-#python -c 'import main; main.function("<parameter>")'
-def search(arg):
-    searchInput = arg["Identifier"]
-    prefOutInput = arg["Output"]
+def search(parameter):
+    searchInput = parameter["Identifier"]
+    prefOutInput = parameter["Output"]
 
     if not searchInput: #empty string
         result = {"list" : returnList()}
