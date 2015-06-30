@@ -1,7 +1,7 @@
 # file: metadata.yml
 
 ---
-name: Gene-API
+name: gene-api
 version: 0.1
 type: query
 main_module: main.py
