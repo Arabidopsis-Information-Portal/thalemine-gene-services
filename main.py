@@ -11,7 +11,7 @@ query.add_view(
 #function used to test code
 #python -c 'import main; main.function("<parameter>")'
 def search(arg):
-    searchInput = arg["Search"]
+    searchInput = arg["Identifier"]
     prefOutInput = arg["Output"]
 
     if not searchInput: #empty string
