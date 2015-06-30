@@ -1,4 +1,4 @@
-#import json
+import json
 from intermine.webservice import Service
 
 service = Service("https://apps.araport.org:443/thalemine/service")
@@ -9,14 +9,19 @@ query.add_view(
 )
 
 #function used to test code
-#python -c 'import main; print main.function("<parameter>")'
-def function(arg):
-    if not arg: #empty string
-        return returnList()
-    elif "*" in arg:    #wildcard search
-        return wildcardGeneID(arg)
+#python -c 'import main; main.function("<parameter>")'
+def search(arg):
+
+    searchInput = arg["Search"]
+
+    prefOutInput = arg["Output"]
+
+    if not searchInput: #empty string
+        print returnList()
+    elif "*" in searchInput:    #wildcard search
+        print wildcardGeneID(searchInput)
     else:   #geneID search
-        return returnInfo(arg)
+        print returnInfo(searchInput, prefOutInput)
 
 #returns list of all Gene IDs
 def returnList():
@@ -28,13 +33,13 @@ def returnList():
     return geneIDList
 
 #recieves a GeneID - returns briefDescription, easily changeable to any field desired
-def returnInfo(id):
+def returnInfo(id, out):
 #this function will look at the geneID from the search and return the basic info of that geneID
     print "Brief Description of %s:" %id
 
     for row in query.rows():
         if id == row["primaryIdentifier"]:
-            return row["briefDescription"]
+            return row[out]
 
 def wildcardGeneID(arg):
     #remove * symbol from string
