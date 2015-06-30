@@ -15,11 +15,11 @@ def search(arg):
     prefOutInput = arg["Output"]
 
     if not searchInput: #empty string
-        result = {'list':returnList()}
+        result = {"list":returnList()}
     elif "*" in searchInput:    #wildcard search
-        result = {'list':wildcardGeneID(searchInput)}
+        result = {"list":wildcardGeneID(searchInput)}
     else:   #geneID search
-        result = {'gene_info':returnInfo(searchInput, prefOutInput)}
+        result = {"gene_info":returnInfo(searchInput, prefOutInput)}
 
     return json.dumps(result)
 
