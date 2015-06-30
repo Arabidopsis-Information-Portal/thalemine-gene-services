@@ -35,7 +35,7 @@ def returnList():
 #recieves a GeneID - returns briefDescription, easily changeable to any field desired
 def returnInfo(id, out):
 #this function will look at the geneID from the search and return the basic info of that geneID
-    print "Brief Description of %s:" %id
+    #print "Brief Description of %s:" %id
 
     for row in query.rows():
         if id == row["primaryIdentifier"]:
