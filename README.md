@@ -1,2 +1,2 @@
 #Araport API that serves basic information about genes.
-Iniyan Chezhian
+Iniyan Chezhian - JCVI
