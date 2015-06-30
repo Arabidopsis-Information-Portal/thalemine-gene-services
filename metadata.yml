@@ -19,7 +19,7 @@ endpoints:
         description: "Preffered gene information to return for single geneID search."
         type: string
         required: false
-        #default: 
+        #default:
         enum:
           - "briefDescription"
           - "computationalDescription"
@@ -31,8 +31,8 @@ endpoints:
           - "symbol"
 requirements:
   - intermine
-  authors:
-      - name: Iniyan Chezhian
-        email: ichezhia@jcvi.org
-        sponsor_organization: JCVI
-        sponsor_uri: http://www.jcvi.org/
+authors:
+  - name: Iniyan Chezhian
+    email: ichezhia@jcvi.org
+    sponsor_organization: JCVI
+    sponsor_uri: http://www.jcvi.org/
