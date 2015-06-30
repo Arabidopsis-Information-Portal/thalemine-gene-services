@@ -11,17 +11,17 @@ query.add_view(
 #function used to test code
 #python -c 'import main; main.function("<parameter>")'
 def search(arg):
-
     searchInput = arg["Search"]
-
     prefOutInput = arg["Output"]
 
     if not searchInput: #empty string
-        print returnList()
+        result = {'list':returnList()}
     elif "*" in searchInput:    #wildcard search
-        print wildcardGeneID(searchInput)
+        result = {'list':wildcardGeneID(searchInput)}
     else:   #geneID search
-        print returnInfo(searchInput, prefOutInput)
+        result = {'gene_info':returnInfo(searchInput, prefOutInput)}
+
+    return json.dumps(result)
 
 #returns list of all Gene IDs
 def returnList():
