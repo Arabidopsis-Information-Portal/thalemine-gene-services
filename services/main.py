@@ -31,6 +31,7 @@ def returnList():
     return geneIDList
 
 def returnInfo(id, out):
+    query.add_constraint("primaryIdentifier", "CONTAINS", id)
     for row in query.rows():
         if id == row["primaryIdentifier"]:
             return row[out]
@@ -42,8 +43,7 @@ def wildcardGeneID(arg):
 
     geneIDList = []
 
-    query = service.new_query("Gene")
-    query.add_view("primaryIdentifier")
+    query.add_constraint("primaryIdentifier", "CONTAINS", arg)
 
     #searching all the GeneIDs - matches are added to list
     for row in query.rows():
