@@ -10,10 +10,8 @@ def search(parameter):
     searchInput = parameter["Identifier"]
     prefOutInput = parameter["Output"]
 
-    if not searchInput:
+    if not searchInput or searchInput is'*':
         result = {"list" : returnList()}
-        if result = null:
-            result = {"list" : wildcardGeneID(searchInput)}        
     elif "*" in searchInput:
         result = {"list" : wildcardGeneID(searchInput)}
     else:
