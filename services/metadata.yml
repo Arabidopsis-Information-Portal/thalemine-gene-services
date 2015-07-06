@@ -6,6 +6,7 @@ main_module: services.main.py
 url: https://github.com/Arabidopsis-Information-Portal/Gene-API
 tags:
     - gene
+    - search
     - api
     - intermine
     - dev
