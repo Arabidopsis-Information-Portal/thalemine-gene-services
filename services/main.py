@@ -12,6 +12,8 @@ def search(parameter):
 
     if not searchInput:
         result = {"list" : returnList()}
+        if result = null:
+            result = {"list" : wildcardGeneID(searchInput)}        
     elif "*" in searchInput:
         result = {"list" : wildcardGeneID(searchInput)}
     else:
