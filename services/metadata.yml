@@ -17,7 +17,7 @@ endpoints:
     description: "Returns GeneIDs or information on a specific GeneID"
     parameters:
       - name: Identifier
-        description: "Enter a geneID to perform a single gene search. Enter part of a geneID then a * to perform a wildcard search. Enter nothing to return a list of all geneIDs."
+        description: "Enter a geneID to perform a single gene search. Enter part of a geneID then a * to perform a wildcard search. Enter just * to return a list of all geneIDs."
         type: string
         required: false
         default: "AT4G34260"
