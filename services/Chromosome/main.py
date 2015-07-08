@@ -10,8 +10,7 @@ from services.common.searchFunctions import returnInfo
 from intermine.webservice import Service
 service = Service("https://apps.araport.org:443/thalemine/service")
 query = service.new_query("Gene")
-query.add_view("briefDescription", "computationalDescription", "curatorSummary", "name", "length", "primaryIdentifier", "secondaryIdentifier", "symbol")
-
+query.add_view("primaryIdentifier", "chromosome.length", "chromosome.primaryIdentifier")
 #operation
 def search(parameter):
     #store input as variables
