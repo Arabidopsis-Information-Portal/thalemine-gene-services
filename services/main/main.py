@@ -7,16 +7,19 @@ from services.common.searchFunctions import returnInfo
 
 #intermine is data service used by thalemine
 #generated python code for query
+"""
 from intermine.webservice import Service
 service = Service("https://apps.araport.org:443/thalemine/service")
 query = service.new_query("Gene")
 query.add_view("briefDescription", "computationalDescription", "curatorSummary", "name", "length", "primaryIdentifier", "secondaryIdentifier", "symbol")
-
+"""
 #operation
 def search(parameter):
     #store input as variables
-    searchInput = parameter["Identifier"]
-    prefOutInput = parameter["Output"]
+    #searchInput = parameter["Identifier"]
+    #prefOutInput = parameter["Output"]
+    prefOutInput = "briefDescription"
+    searchInput = parameter
 
     #searchInput is null or just * - return list of all geneIDs
     if not searchInput or searchInput is'*':

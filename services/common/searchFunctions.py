@@ -1,3 +1,9 @@
+from intermine.webservice import Service
+service = Service("https://apps.araport.org:443/thalemine/service")
+query = service.new_query("Gene")
+query.add_view("briefDescription", "computationalDescription", "curatorSummary", "name", "length", "primaryIdentifier", "secondaryIdentifier", "symbol")
+
+
 #returns list of all Gene IDs
 def returnList():
     geneIDList = []
