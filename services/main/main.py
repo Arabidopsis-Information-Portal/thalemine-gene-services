@@ -16,10 +16,8 @@ query.add_view("briefDescription", "computationalDescription", "curatorSummary",
 #operation
 def search(parameter):
     #store input as variables
-    #searchInput = parameter["Identifier"]
-    #prefOutInput = parameter["Output"]
-    prefOutInput = "briefDescription"
-    searchInput = parameter
+    searchInput = parameter["Identifier"]
+    prefOutInput = parameter["Output"]
 
     #searchInput is null or just * - return list of all geneIDs
     if not searchInput or searchInput is'*':
