@@ -1,9 +1,9 @@
 import json
 
 #intermine search common algorithms
-from services.common.searchFunctions import returnList
-from services.common.searchFunctions import wildcardGeneID
-from services.common.searchFunctions import returnInfo
+from searchFunctions import returnList
+from searchFunctions import wildcardGeneID
+from searchFunctions import returnInfo
 
 #operation
 def search(parameter):
