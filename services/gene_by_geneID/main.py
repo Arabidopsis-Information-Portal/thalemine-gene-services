@@ -20,7 +20,13 @@ def search(parameter):
     if prefOutInput is 'All':
         print json.dumps(returnAllInfo(searchInput))
     else:
-        print json.dumps({"gene_info" : returnInfo(searchInput, prefOutInput)})
+        print json.dumps(returnInfo(searchInput,prefOutInput))
+
+def list():
+    query.add_view("primaryIdentifier")
+
+    for row in query.rows():
+        print row["primaryIdentifier"]
 
 #returns information for all fields
 def returnAllInfo(id):
@@ -29,9 +35,10 @@ def returnAllInfo(id):
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {'primaryIdentifier': row["primaryIdentifier"],
-            'chromosomeLocation.end' : row["chromosomeLocation.end"],
-            'chromosomeLocation.start' : row["chromosomeLocation.start"]
+        return {"primaryIdentifier": row["primaryIdentifier"],
+            "results" : {"chromosomeLocation.end" : row["chromosomeLocation.end"],
+            "chromosomeLocation.start" : row["chromosomeLocation.start"]
+            }
         }
 
 #returns specific info about specific geneID
@@ -41,4 +48,4 @@ def returnInfo(id, out):
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {'primaryIdentifier': row["primaryIdentifier"], out : row[out]}
+        return {"primaryIdentifier": row["primaryIdentifier"], out : row[out]}
