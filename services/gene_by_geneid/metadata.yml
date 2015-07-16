@@ -4,8 +4,6 @@ version: 0.1
 type: query
 main_module: services.gene_by_geneid.main.py
 url: https://github.com/Arabidopsis-Information-Portal/Gene-API
-whitelist:
-    - araport.org
 tags:
     - gene
     - search
