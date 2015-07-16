@@ -6,10 +6,8 @@ from intermine.webservice import Service
 service = Service("https://apps.araport.org/thalemine/service")
 query = service.new_query("Gene")
 
-#TODO: Move this to inside the functions
-query.add_view(
-    "primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start"
-)
+#adding views to the query
+query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
 
 #operation
 def search(parameter):
@@ -25,19 +23,9 @@ def search(parameter):
 
 #operation
 def list():
-    query.add_view("primaryIdentifier")
-
-    results = {}
-
-
     for row in query.rows():
         print json.dumps({"primaryIdentifier" : row["primaryIdentifier"]})
         print '---'
-        #results["primaryIdentifier"+str(row)] = row["primaryIdentifier"]
-        #results[row] = row["primaryIdentifier"]
-
-
-    #return results
 
 #returns information for all fields
 def returnAllInfo(id):
