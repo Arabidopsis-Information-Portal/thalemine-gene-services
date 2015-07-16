@@ -1,6 +1,6 @@
 import json
 
-def search():
+def search(parameters):
     print json.dumps({'Name': 'Zara', 'Age': 7, 'Class': 'First'})
     print '---'
 
