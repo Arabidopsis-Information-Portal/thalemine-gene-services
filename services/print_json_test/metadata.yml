@@ -1,0 +1,40 @@
+name: print_json
+description: 'Prints json text. Test.'
+version: 0.1
+type: query
+main_module: services.print_json_test.main.py
+url: https://github.com/Arabidopsis-Information-Portal/Gene-API
+whitelist:
+    - araport.org
+tags:
+    - gene
+    - search
+    - api
+    - intermine
+    - dev
+    - arabidopsis
+    - iniyan
+endpoints:
+  /search:
+    description: "Returns information on a specific GeneID."
+    parameters:
+      - name: Identifier
+        description: "Enter a geneID to perform a single gene search."
+        type: string
+        required: true
+        default: "AT4G34260"
+      - name: Output
+        description: "Gene ID to return information for."
+        type: string
+        required: true
+        enum:
+          - "All"
+          - "chromosomeLocation.end"
+          - "chromosomeLocation.start"
+requirements:
+  - intermine
+authors:
+  - name: Iniyan Chezhian
+    email: ichezhia@jcvi.org
+    sponsor_organization: JCVI
+    sponsor_uri: http://www.jcvi.org/
