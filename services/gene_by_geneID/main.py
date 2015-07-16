@@ -6,6 +6,7 @@ from intermine.webservice import Service
 service = Service("https://apps.araport.org/thalemine/service")
 query = service.new_query("Gene")
 
+#TODO: Move this to inside the functions
 query.add_view(
     "primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start"
 )
@@ -22,11 +23,21 @@ def search(parameter):
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
 
+#operation
 def list():
     query.add_view("primaryIdentifier")
 
+    results = {}
+
+
     for row in query.rows():
-        print row["primaryIdentifier"]
+        print json.dumps({"primaryIdentifier" : row["primaryIdentifier"]})
+        print '---'
+        #results["primaryIdentifier"+str(row)] = row["primaryIdentifier"]
+        #results[row] = row["primaryIdentifier"]
+
+
+    #return results
 
 #returns information for all fields
 def returnAllInfo(id):
@@ -36,11 +47,11 @@ def returnAllInfo(id):
     #return dict of information of matching geneID
     for row in query.rows():
         return {"primaryIdentifier": row["primaryIdentifier"],
-            "results" : {"chromosomeLocation.end" : row["chromosomeLocation.end"],
-            "chromosomeLocation.start" : row["chromosomeLocation.start"]
-            }
+                "results" :
+                    {"chromosomeLocation.end" : row["chromosomeLocation.end"],
+                        "chromosomeLocation.start" : row["chromosomeLocation.start"]
+                    }
         }
-
 #returns specific info about specific geneID
 def returnInfo(id, out):
     #query search thalemine
