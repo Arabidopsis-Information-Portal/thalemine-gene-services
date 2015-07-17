@@ -25,7 +25,7 @@ def search(parameter):
 def list():
     for row in query.rows():
         print json.dumps({"primaryIdentifier" : row["primaryIdentifier"]})
-        print '---'
+        print "---"
 
 #returns information for all fields
 def returnAllInfo(id):
