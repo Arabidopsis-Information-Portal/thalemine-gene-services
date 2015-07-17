@@ -17,6 +17,7 @@ def search(parameter):
 
     #determine what to return
     if prefOutInput is "both":
+        raise Exception("EX")
         print json.dumps(returnAllInfo(searchInput))
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
