@@ -13,6 +13,7 @@ query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocatio
 def search(parameter):
     #store input as variables
     searchInput = parameter["Identifier"]
+    raise Exception("EX")
     prefOutInput = parameter["Output"]
 
     #determine what to return
