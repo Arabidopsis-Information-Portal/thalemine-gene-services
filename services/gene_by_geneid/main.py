@@ -32,6 +32,11 @@ def returnAllInfo(id):
     #query search thalemine
     query.add_constraint("primaryIdentifier", "=", id, code = "A")
 
+    #test
+    return {"primaryIdentifier": "this is a test"}
+
+
+    """
     #return dict of information of matching geneID
     for row in query.rows():
         return {"primaryIdentifier": row["primaryIdentifier"],
@@ -40,6 +45,8 @@ def returnAllInfo(id):
                         "chromosomeLocation.start" : row["chromosomeLocation.start"]
                     }
         }
+        """
+
 #returns specific info about specific geneID
 def returnInfo(id, out):
     #query search thalemine
