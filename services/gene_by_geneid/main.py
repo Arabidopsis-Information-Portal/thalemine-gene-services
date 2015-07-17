@@ -13,12 +13,10 @@ query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocatio
 def search(parameter):
     #store input as variables
     searchInput = parameter["Identifier"]
-    raise Exception("EX")
     prefOutInput = parameter["Output"]
 
     #determine what to return
-    if prefOutInput is "both":
-        raise Exception("EX")
+    if prefOutInput == "both":
         print json.dumps(returnAllInfo(searchInput))
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
