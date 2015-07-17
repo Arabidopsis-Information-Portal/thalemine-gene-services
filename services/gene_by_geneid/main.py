@@ -30,7 +30,7 @@ def list(parameter):
 #returns information for all fields
 def returnAllInfo(id):
     #query search thalemine
-    query.add_constraint("primaryIdentifier", "=", id, code = "A")
+    #query.add_constraint("primaryIdentifier", "=", id, code = "A")
 
     #test
     return {"primaryIdentifier": "this is a test"}
