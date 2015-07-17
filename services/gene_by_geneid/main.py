@@ -16,7 +16,7 @@ def search(parameter):
     prefOutInput = parameter["Output"]
 
     #determine what to return
-    if prefOutInput is "All":
+    if prefOutInput is "both":
         print json.dumps(returnAllInfo(searchInput))
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
@@ -50,7 +50,7 @@ def returnAllInfo(id):
 #returns specific info about specific geneID
 def returnInfo(id, out):
     #query search thalemine
-    query.add_constraint("primaryIdentifier", "=", str(id), code = "A")
+    query.add_constraint("primaryIdentifier", "=", id, code = "A")
 
     #return dict of information of matching geneID
     for row in query.rows():

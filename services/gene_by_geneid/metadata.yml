@@ -28,7 +28,7 @@ endpoints:
         type: string
         required: true
         enum:
-          - "All"
+          - "both"
           - "chromosomeLocation.end"
           - "chromosomeLocation.start"
   /list:
