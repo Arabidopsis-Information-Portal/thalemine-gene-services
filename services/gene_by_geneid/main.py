@@ -22,7 +22,7 @@ def search(parameter):
         print json.dumps(returnInfo(searchInput,prefOutInput))
 
 #operation
-def list():
+def list(parameter):
     for row in query.rows():
         print json.dumps({"primaryIdentifier" : row["primaryIdentifier"]})
         print "---"
