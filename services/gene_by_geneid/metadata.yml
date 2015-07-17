@@ -31,6 +31,8 @@ endpoints:
           - "All"
           - "chromosomeLocation.end"
           - "chromosomeLocation.start"
+    /list:
+      description: "Returns a list of all valid GeneIDs."
 requirements:
   - intermine
 authors:
