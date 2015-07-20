@@ -13,16 +13,18 @@ service = Service("https://apps.araport.org/thalemine/service")
 #operation
 def search(parameter):
 
-    queryAll1 = service.new_query("Gene")
-    queryAll1.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-
-    for row in queryAll1.rows():
+    querySearch = service.new_query("Gene")
+    querySearch.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    cnt = 0
+    for row in querySearch.rows():
         org = {}
         org['locus_id'] = row["primaryIdentifier"]
-        break
+        print json.dumps(org)
+        print '---'
+        cnt += 1
+        if (cnt > 10):
+            break
 
-    print json.dumps(org)
-    print '---'
     return
 
 
@@ -42,16 +44,17 @@ def search(parameter):
 #operation
 def list(parameter):
 
-    queryAll = service.new_query("Gene")
-    queryAll.add_view("primaryIdentifier")
-    cnt=0
-    for row in queryAll.rows():
+    querySearch = service.new_query("Gene")
+    querySearch.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    cnt = 0
+    for row in querySearch.rows():
+        org = {}
+        org['locus_id'] = row["primaryIdentifier"]
+        print json.dumps(org)
+        print '---'
         cnt += 1
-        if (cnt > 33000 and cnt < 33003):
-            org = {}
-            org['locus_id'] = row["primaryIdentifier"]
-            print json.dumps(org)
-            print '---'
+        if (cnt > 30000):
+            break
 
     return
         #the at num is this ... ->>   row["primaryIdentifier"]
