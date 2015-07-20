@@ -15,7 +15,7 @@ def search(parameter):
         if (cnt > 33590):
             print json.dumps(org)
             print '---'
-            cnt += 1
+        cnt += 1
     return
 
 #operation
