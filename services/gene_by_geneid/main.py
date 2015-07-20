@@ -4,8 +4,9 @@ import json
 #generated python code for query
 from intermine.webservice import Service
 service = Service("https://apps.araport.org/thalemine/service")
-query = service.new_query("Gene")
 
+
+query = service.new_query("Gene")
 #adding views to the query
 query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
 
@@ -23,11 +24,17 @@ def search(parameter):
 
 #operation
 def list(parameter):
-    for row in query.rows():
-        print json.dumps({"primaryIdentifier" : row["primaryIdentifier"]})
-        print "---"
+    #for row in query.rows():
+        #print json.dumps({"primaryIdentifier" : row["primaryIdentifier"]})
+        #test = row["primaryIdentifier"]
+        #x=1
+        #print "---"
 
-#returns information for all fields
+    #print "done"
+    print "---"
+
+
+#returns information for all fields for specfic geneID
 def returnAllInfo(id):
     #query search thalemine
     query.add_constraint("primaryIdentifier", "=", id, code = "A")
