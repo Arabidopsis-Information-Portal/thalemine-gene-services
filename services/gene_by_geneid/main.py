@@ -44,14 +44,14 @@ def list(parameter):
 
     queryAll = service.new_query("Gene")
     queryAll.add_view("primaryIdentifier")
-
+    cnt=0
     for row in queryAll.rows():
-        org = {}
-        org['locus_id'] = row["primaryIdentifier"]
-        #org['locus_id'] = "text"
-        break
-    print json.dumps(org)
-    print '---'
+        cnt +=- 1
+        if (cnt == 1):
+            org = {}
+            org['locus_id'] = row["primaryIdentifier"]
+            print json.dumps(org)
+            print '---'
 
         #the at num is this ... ->>   row["primaryIdentifier"]
 
