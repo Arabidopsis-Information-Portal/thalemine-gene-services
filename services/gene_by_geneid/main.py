@@ -36,9 +36,14 @@ def list(parameter):
 
     #geneIDList = []
 
-    #just stream print AT #'s
+
+
     for row in queryAll.rows():
-        print {"primaryIdentifier" : row["primaryIdentifier"]}
+        org = {}
+
+        org["locus-id"] = row["primaryIdentifier"]
+
+        print json.dumps(org)
         print "---"
 
         #the at num is this ... ->>   row["primaryIdentifier"]
@@ -70,13 +75,15 @@ def returnAllInfo(id):
                     }
         }
 
-"""
+
 #returns specific info about specific geneID
 def returnInfo(id, out):
     #query search thalemine
+    query = service.new_query("Gene")
+    #adding views to the query
+    query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
     query.add_constraint("primaryIdentifier", "=", id, code = "A")
 
     #return dict of information of matching geneID
     for row in query.rows():
         return {"primaryIdentifier": row["primaryIdentifier"], out : row[out]}
-"""
