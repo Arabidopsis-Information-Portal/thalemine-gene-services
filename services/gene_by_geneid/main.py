@@ -52,7 +52,8 @@ def list(parameter):
             org['locus_id'] = row["primaryIdentifier"]
             print json.dumps(org)
             print '---'
-
+            
+    return
         #the at num is this ... ->>   row["primaryIdentifier"]
 
 
