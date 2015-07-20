@@ -47,7 +47,7 @@ def list(parameter):
     cnt=0
     for row in queryAll.rows():
         cnt += 1
-        if (cnt > 33000):
+        if (cnt > 33000 and cnt < 33003):
             org = {}
             org['locus_id'] = row["primaryIdentifier"]
             print json.dumps(org)
