@@ -47,12 +47,11 @@ def list(parameter):
     cnt=0
     for row in queryAll.rows():
         cnt += 1
-        if (cnt > 100):
-            break
-        org = {}
-        org['locus_id'] = row["primaryIdentifier"]
-        print json.dumps(org)
-        print '---'
+        if (cnt > 33000):
+            org = {}
+            org['locus_id'] = row["primaryIdentifier"]
+            print json.dumps(org)
+            print '---'
 
     return
         #the at num is this ... ->>   row["primaryIdentifier"]
