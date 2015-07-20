@@ -46,7 +46,7 @@ def list(parameter):
     queryAll.add_view("primaryIdentifier")
     cnt=0
     for row in queryAll.rows():
-        cnt +=- 1
+        cnt += 1
         if (cnt == 1):
             org = {}
             org['locus_id'] = row["primaryIdentifier"]
