@@ -47,13 +47,11 @@ def list(parameter):
 
     for row in queryAll.rows():
         org = {}
-
         org['locus_id'] = row["primaryIdentifier"]
-
         #org['locus_id'] = "text"
-
-        print json.dumps(org)
-        print '---'
+        break
+    print json.dumps(org)
+    print '---'
 
         #the at num is this ... ->>   row["primaryIdentifier"]
 
