@@ -12,6 +12,21 @@ service = Service("https://apps.araport.org/thalemine/service")
 
 #operation
 def search(parameter):
+
+    queryAll1 = service.new_query("Gene")
+    queryAll1.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+
+    for row in queryAll1.rows():
+        org = {}
+
+        org['locus_id'] = row["primaryIdentifier"]
+
+        print json.dumps(org)
+        print '---'
+
+
+
+    """
     #store input as variables
     searchInput = parameter["Identifier"]
     prefOutInput = parameter["Output"]
@@ -22,31 +37,23 @@ def search(parameter):
     else:
         #print json.dumps(returnInfo(searchInput,prefOutInput))
         print "test123"
+    """
 
 #operation
 def list(parameter):
 
     queryAll = service.new_query("Gene")
-    queryAll.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-
-    #print all info and genes - recursion with search function
-    #for row in queryAll.rows():
-    #    search({"Identifier":row["primaryIdentifier"] , "Output":"both"})
-    #    print "---"
-
-    #geneIDList = []
-
-
+    queryAll.add_view("primaryIdentifier")
 
     for row in queryAll.rows():
         org = {}
 
-        #org["locus_id"] = row["primaryIdentifier"]
+        org['locus_id'] = row["primaryIdentifier"]
 
-        org["locus_id"] = "text"
+        #org['locus_id'] = "text"
 
         print json.dumps(org)
-        print "---"
+        print '---'
 
         #the at num is this ... ->>   row["primaryIdentifier"]
 
