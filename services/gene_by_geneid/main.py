@@ -16,7 +16,7 @@ def search(parameter):
     queryAll1 = service.new_query("Gene")
     queryAll1.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
 
-    row = queryAll1.rows()
+    row = queryAll1.rows()[1]
     org = {}
     org['locus_id'] = row["primaryIdentifier"]
     print json.dumps(org)
