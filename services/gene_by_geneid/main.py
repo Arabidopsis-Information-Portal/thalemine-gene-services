@@ -41,7 +41,7 @@ def list(parameter):
     for row in queryAll.rows():
         org = {}
 
-        org["locus-id"] = row["primaryIdentifier"]
+        org["locus_id"] = row["primaryIdentifier"]
 
         print json.dumps(org)
         print "---"
