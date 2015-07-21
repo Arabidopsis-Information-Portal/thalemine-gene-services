@@ -1,37 +1,61 @@
 import json
-#service to access thalemine database
+
+#intermine is data service used by thalemine
+#generated python code for query
 from intermine.webservice import Service
 service = Service("https://apps.araport.org/thalemine/service")
 
-#operation to print the last ~20 locus ids
+#operation
 def search(parameter):
+    #store input as variables
+    searchInput = parameter["Identifier"]
+    prefOutInput = parameter["Output"]
 
-    querySearch = service.new_query("Gene")
-    querySearch.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-    querySearch.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
-    cnt = 0
-    for row in querySearch.rows():
-        org = {}
-        org['locus_id'] = row["primaryIdentifier"]
-        if (cnt > 33590):
-            print json.dumps(org)
-            print '---'
-        cnt += 1
-    return
+    #determine what to return
+    if prefOutInput == "both":
+        print json.dumps(returnAllInfo(searchInput))
+    else:
+        print json.dumps(returnInfo(searchInput,prefOutInput))
 
-#operation to print the first 30000 locus ids
+#operation
 def list(parameter):
 
-    querySearch = service.new_query("Gene")
-    querySearch.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-    querySearch.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
-    cnt = 0
-    for row in querySearch.rows():
+    queryList = service.new_query("Gene")
+    queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
+    for row in queryList.rows():
         org = {}
         org['locus_id'] = row["primaryIdentifier"]
         print json.dumps(org)
         print '---'
-        cnt += 1
-        if (cnt > 30000):
-            break
+
     return
+
+#returns information for all fields for specfic geneID
+def returnAllInfo(id):
+    #query search thalemine
+    query = service.new_query("Gene")
+    #adding views to the query
+    query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    query.add_constraint("primaryIdentifier", "=", id, code = "A")
+
+    #return dict of information of matching geneID
+    for row in query.rows():
+        return {"primaryIdentifier": row["primaryIdentifier"],
+                "results" :
+                    {"chromosomeLocation.end" : row["chromosomeLocation.end"],
+                        "chromosomeLocation.start" : row["chromosomeLocation.start"]
+                    }
+        }
+
+#returns specific info about specific geneID
+def returnInfo(id, out):
+    #query search thalemine
+    query = service.new_query("Gene")
+    #adding views to the query
+    query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    query.add_constraint("primaryIdentifier", "=", id, code = "A")
+
+    #return dict of information of matching geneID
+    for row in query.rows():
+        return {"primaryIdentifier": row["primaryIdentifier"], out : row[out]}
