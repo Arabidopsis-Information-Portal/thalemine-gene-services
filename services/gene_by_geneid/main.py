@@ -8,6 +8,7 @@ def search(parameter):
 
     querySearch = service.new_query("Gene")
     querySearch.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    querySearch.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
     cnt = 0
     for row in querySearch.rows():
         org = {}
@@ -23,6 +24,7 @@ def list(parameter):
 
     querySearch = service.new_query("Gene")
     querySearch.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    querySearch.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
     cnt = 0
     for row in querySearch.rows():
         org = {}
