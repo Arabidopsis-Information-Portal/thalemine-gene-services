@@ -9,13 +9,7 @@ Another function, list, would be used to list all 30000+ geneIDs.
 
 ## Notes
 
-v0.2 is still a WIP.
-
-v0.2 works fine on the command line so far.
-
-Testing, cleanup, and commenting.
-
-v0.2 is not yet on araport.org.
+v0.2 is the final version. If there are any bugs or other issues, please let me know. Thanks.
 
 ## Contributors
 
