@@ -12,7 +12,7 @@ def search(parameter):
     prefOutInput = parameter["Output"]
 
     #determine what to return
-    if prefOutInput == "both":
+    if prefOutInput == "all":
         print json.dumps(returnAllInfo(searchInput))
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
@@ -23,16 +23,15 @@ def list(parameter):
     queryList = service.new_query("Gene")
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
     queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
-    queryList.add_constraint("primaryIdentifier", "=", "AT*", code = "B")
-
     for row in queryList.rows():
-        org = {}
+        dic = {}
         org['locus_id'] = row["primaryIdentifier"]
         print json.dumps(org)
         print '---'
 
     return
 
+#TODO
 #returns information for all fields for specfic geneID
 def returnAllInfo(id):
     #auto-generated query code
@@ -51,6 +50,7 @@ def returnAllInfo(id):
                     }
         }
 
+#TODO
 #returns specific info about specific geneID
 def returnInfo(id, out):
     #auto-generated query code
