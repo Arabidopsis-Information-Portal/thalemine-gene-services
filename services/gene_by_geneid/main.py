@@ -45,11 +45,9 @@ def returnAllInfo(id):
     #return dict of information of matching geneID
     for row in query.rows():
         return {"primaryIdentifier": row["primaryIdentifier"],
-                "results" :
-                    {"chromosomeLocation.end" : row["chromosomeLocation.end"],
-                        "chromosomeLocation.start" : row["chromosomeLocation.start"]
-                    }
-        }
+                "chromosomeLocation.end" : row["chromosomeLocation.end"],
+                "chromosomeLocation.start" : row["chromosomeLocation.start"]
+                }
 
 #returns specific info about specific geneID
 def returnInfo(id, out):
