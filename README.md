@@ -1,7 +1,11 @@
 #Gene API
-Araport API that serves basic information about genes.
-Perform three main functions. Search for a specific geneID to return a specified field about that gene. Search for a geneID with a * to return a list of matching geneIDs. Enter nothing to return a list of all geneIDs.
+Araport APIs that serves basic information about genes.
 
+## Notes
+Find these APIs under the services folder.
 
+The testing folder is for running tests of the APIs.
+
+## Contributors
 
   * Iniyan Chezhian - JCVI

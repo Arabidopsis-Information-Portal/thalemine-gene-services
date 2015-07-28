@@ -24,7 +24,7 @@ def list(parameter):
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
     queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
     for row in queryList.rows():
-        dic = {}
+        org = {}
         org['locus_id'] = row["primaryIdentifier"]
         print json.dumps(org)
         print '---'
@@ -38,16 +38,19 @@ def returnAllInfo(id):
     #query search thalemine
     query = service.new_query("Gene")
     #adding views to the query
-    query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-    query.add_constraint("primaryIdentifier", "=", id, code = "A")
+    query.add_view(
+    "goAnnotation.subject.primaryIdentifier", "goAnnotation.ontologyTerm.name",
+    "goAnnotation.ontologyTerm.description",
+    "goAnnotation.ontologyTerm.namespace", "goAnnotation.evidence.code.code"
+    )
+    #adding a constraint to limit the results
+    query.add_constraint("goAnnotation.subject.primaryIdentifier", "=", id, code = "B")
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {"primaryIdentifier": row["primaryIdentifier"],
-                "results" :
-                    {"chromosomeLocation.end" : row["chromosomeLocation.end"],
-                        "chromosomeLocation.start" : row["chromosomeLocation.start"]
-                    }
+        return {"primaryIdentifier": row["goAnnotation.subject.primaryIdentifier"],
+                "chromosomeLocation.end" : row["chromosomeLocation.end"],
+                "chromosomeLocation.start" : row["chromosomeLocation.start"]
         }
 
 #TODO
