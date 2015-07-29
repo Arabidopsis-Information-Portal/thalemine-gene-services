@@ -26,13 +26,15 @@ endpoints:
         required: true
         default: "AT4G34260"
       - name: Output
-        description: "Gene ID to return information for."
+        description: "Gene ID to return go information for."
         type: string
         required: true
         enum:
           - "all"
-          - "chromosomeLocation.end"
-          - "chromosomeLocation.start"
+          - "goAnnotation.ontologyTerm.name"
+          - "goAnnotation.ontologyTerm.description"
+          - "goAnnotation.ontologyTerm.namespace"
+          - "goAnnotation.evidence.code.code"
   /list:
     description: "Returns a list of all valid GeneIDs."
 requirements:

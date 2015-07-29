@@ -13,7 +13,7 @@ def search(parameter):
 
     #determine what to return
     if prefOutInput == "all":
-        print json.dumps(returnAllInfo(searchInput))
+        returnAllInfo(searchInput)
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
 
@@ -31,7 +31,6 @@ def list(parameter):
 
     return
 
-#TODO
 #returns information for all fields for specfic geneID
 def returnAllInfo(id):
     #auto-generated query code
@@ -39,30 +38,45 @@ def returnAllInfo(id):
     query = service.new_query("Gene")
     #adding views to the query
     query.add_view(
-    "goAnnotation.subject.primaryIdentifier", "goAnnotation.ontologyTerm.name",
+    "goAnnotation.subject.primaryIdentifier",
+    "goAnnotation.ontologyTerm.name",
     "goAnnotation.ontologyTerm.description",
-    "goAnnotation.ontologyTerm.namespace", "goAnnotation.evidence.code.code"
+    "goAnnotation.ontologyTerm.namespace",
+    "goAnnotation.evidence.code.code"
     )
     #adding a constraint to limit the results
     query.add_constraint("goAnnotation.subject.primaryIdentifier", "=", id, code = "B")
 
+
     #return dict of information of matching geneID
     for row in query.rows():
-        return {"primaryIdentifier": row["goAnnotation.subject.primaryIdentifier"],
-                "chromosomeLocation.end" : row["chromosomeLocation.end"],
-                "chromosomeLocation.start" : row["chromosomeLocation.start"]
-        }
+        print json.dumps(
+                {"goAnnotation.subject.primaryIdentifier" : row["goAnnotation.subject.primaryIdentifier"],
+                "goAnnotation.ontologyTerm.name" : row["goAnnotation.ontologyTerm.name"],
+                "goAnnotation.ontologyTerm.description" : row["goAnnotation.ontologyTerm.description"],
+                "goAnnotation.ontologyTerm.namespace" : row["goAnnotation.ontologyTerm.namespace"],
+                "goAnnotation.evidence.code.code" : row["goAnnotation.evidence.code.code"],
+                }
+        )
+        print '---'
 
-#TODO
 #returns specific info about specific geneID
 def returnInfo(id, out):
     #auto-generated query code
     #query search thalemine
     query = service.new_query("Gene")
     #adding views to the query
-    query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-    query.add_constraint("primaryIdentifier", "=", id, code = "A")
+    query.add_view(
+    "goAnnotation.subject.primaryIdentifier",
+    "goAnnotation.ontologyTerm.name",
+    "goAnnotation.ontologyTerm.description",
+    "goAnnotation.ontologyTerm.namespace",
+    "goAnnotation.evidence.code.code"
+    )
+    #adding a constraint to limit the results
+    query.add_constraint("goAnnotation.subject.primaryIdentifier", "=", id, code = "B")
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {"primaryIdentifier": row["primaryIdentifier"], out : row[out]}
+        return {"goAnnotation.subject.primaryIdentifier": row["goAnnotation.subject.primaryIdentifier"],
+                out : row[out]}
