@@ -15,7 +15,7 @@ def search(parameter):
     if prefOutInput == "all":
         returnAllInfo(searchInput)
     else:
-        print json.dumps(returnInfo(searchInput,prefOutInput))
+        returnInfo(searchInput,prefOutInput)
 
 #operation
 def list(parameter):
@@ -78,5 +78,8 @@ def returnInfo(id, out):
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {"goAnnotation.subject.primaryIdentifier": row["goAnnotation.subject.primaryIdentifier"],
+        print json.dumps(
+                {"goAnnotation.subject.primaryIdentifier": row["goAnnotation.subject.primaryIdentifier"],
                 out : row[out]}
+        )
+        print '---'
