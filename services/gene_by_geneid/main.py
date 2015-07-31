@@ -12,7 +12,7 @@ def search(parameter):
     prefOutInput = parameter["Output"]
 
     #determine what to return
-    if prefOutInput == "both":
+    if prefOutInput == "all":
         print json.dumps(returnAllInfo(searchInput))
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
