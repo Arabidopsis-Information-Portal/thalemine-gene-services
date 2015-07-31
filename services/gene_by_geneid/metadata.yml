@@ -28,6 +28,7 @@ endpoints:
         description: "Gene ID to return information for."
         type: string
         required: true
+        default: "both"
         enum:
           - "both"
           - "chromosomeLocation.end"

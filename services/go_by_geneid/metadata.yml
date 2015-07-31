@@ -29,6 +29,7 @@ endpoints:
         description: "Gene ID to return go information for."
         type: string
         required: true
+        default: "all"
         enum:
           - "all"
           - "goAnnotation.ontologyTerm.name"
