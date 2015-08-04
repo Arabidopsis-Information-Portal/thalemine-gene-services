@@ -23,7 +23,6 @@ def list(parameter):
     queryList = service.new_query("Gene")
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
     queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
-    queryList.add_constraint("primaryIdentifier", "=", "AT*", code = "B")
 
     for row in queryList.rows():
         org = {}
@@ -44,7 +43,7 @@ def returnAllInfo(id):
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {"primaryIdentifier": row["primaryIdentifier"],
+        return {"locus_id": row["primaryIdentifier"],
                 "chromosomeLocation.end" : row["chromosomeLocation.end"],
                 "chromosomeLocation.start" : row["chromosomeLocation.start"]
                 }
@@ -60,4 +59,4 @@ def returnInfo(id, out):
 
     #return dict of information of matching geneID
     for row in query.rows():
-        return {"primaryIdentifier": row["primaryIdentifier"], out : row[out]}
+        return {"locus_id": row["primaryIdentifier"], out : row[out]}

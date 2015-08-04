@@ -51,11 +51,11 @@ def returnAllInfo(id):
     #return dict of information of matching geneID
     for row in query.rows():
         print json.dumps(
-                {"goAnnotation.subject.primaryIdentifier" : row["goAnnotation.subject.primaryIdentifier"],
-                "goAnnotation.ontologyTerm.name" : row["goAnnotation.ontologyTerm.name"],
-                "goAnnotation.ontologyTerm.description" : row["goAnnotation.ontologyTerm.description"],
-                "goAnnotation.ontologyTerm.namespace" : row["goAnnotation.ontologyTerm.namespace"],
-                "goAnnotation.evidence.code.code" : row["goAnnotation.evidence.code.code"],
+                {"locus_id" : row["goAnnotation.subject.primaryIdentifier"],
+                "name" : row["goAnnotation.ontologyTerm.name"],
+                "def" : row["goAnnotation.ontologyTerm.description"],
+                "namespace" : row["goAnnotation.ontologyTerm.namespace"],
+                "evidence_code" : row["goAnnotation.evidence.code.code"],
                 }
         )
         print '---'
