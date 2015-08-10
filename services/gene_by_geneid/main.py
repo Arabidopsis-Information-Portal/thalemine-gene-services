@@ -27,8 +27,6 @@ def list(parameter):
     #auto-generated query code
     queryList = service.new_query("Gene")
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
-    
-    queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
 
     for row in queryList.rows():
         org = {}
