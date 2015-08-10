@@ -23,12 +23,12 @@ def list(parameter):
     queryList = service.new_query("Gene")
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
     queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
+
     for row in queryList.rows():
         org = {}
         org['locus_id'] = row["primaryIdentifier"]
         print json.dumps(org)
         print '---'
-
     return
 
 #returns information for all fields for specfic geneID
