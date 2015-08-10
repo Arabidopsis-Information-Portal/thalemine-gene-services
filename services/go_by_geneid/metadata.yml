@@ -1,32 +1,28 @@
 name: go_by_geneid
 description: 'Araport API that serves GO information about genes.'
-version: 0.2
+version: 1.0
 type: query
 main_module: services.go_by_geneid.main.py
-timeout: 90
+timeout: 120
 url: https://apps.araport.org
 whitelist:
     - apps.araport.org
 tags:
     - gene
-    - ontology
-    - search
-    - api
+    - thalemine
     - intermine
-    - dev
-    - arabidopsis
     - iniyan
 endpoints:
   /search:
-    description: "Returns go information on a specific GeneID."
+    description: "Returns GO information on a specific gene."
     parameters:
       - name: Identifier
-        description: "Enter a geneID to perform a single gene search."
+        description: "Enter a locus ID to search for a specific gene."
         type: string
         required: true
         default: "AT4G34260"
       - name: Output
-        description: "Gene ID to return go information for."
+        description: "Which GO information to return. Select "all" to return all GO information."
         type: string
         required: true
         default: "all"
@@ -37,7 +33,7 @@ endpoints:
           - "goAnnotation.ontologyTerm.namespace"
           - "goAnnotation.evidence.code.code"
   /list:
-    description: "Returns a list of all GeneIDs which have GO information available to search for."
+    description: "Returns a list of locus IDs which have GO information."
 requirements:
   - intermine
 authors:

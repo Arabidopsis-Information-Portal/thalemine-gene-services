@@ -1,8 +1,8 @@
-#gene_by_geneid_v0.2
+#gene_by_geneid_v1.0
 
 ## Synopsis
 
-###Araport API that serves basic information about genes.
+###Araport API that serves chromosome information about genes.
 
 The main goal for this API was to have a search function for a specific geneID and return chromosome information.
 
@@ -16,7 +16,7 @@ Example Locus ID: AT4G34260
 
 ## Notes
 
-v0.2 is the final version.
+v1.0 is the final version.
 
 ## Contributors
 

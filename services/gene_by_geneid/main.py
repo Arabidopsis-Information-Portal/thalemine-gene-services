@@ -42,6 +42,7 @@ def returnAllInfo(id):
     query = service.new_query("Gene")
     #adding views to the query
     query.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    #manipulate the auto-generated code to constrain to a variable
     query.add_constraint("primaryIdentifier", "=", id, code = "A")
 
     #return dict of information of matching geneID

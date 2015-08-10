@@ -1,4 +1,4 @@
-#go_by_geneid_v0.2
+#go_by_geneid_v1.0
 
 ## Synopsis
 
@@ -16,7 +16,7 @@ Example Locus ID: AT4G34260
 
 ## Notes
 
-v0.2 is the final version.
+v1.0 is the final version.
 
 ## Contributors
 

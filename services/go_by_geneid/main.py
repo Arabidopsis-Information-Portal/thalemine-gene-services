@@ -44,7 +44,7 @@ def returnAllInfo(id):
     "goAnnotation.ontologyTerm.namespace",
     "goAnnotation.evidence.code.code"
     )
-    #adding a constraint to limit the results
+    #manipulate the auto-generated code to constrain to a variable
     query.add_constraint("goAnnotation.subject.primaryIdentifier", "=", id, code = "B")
 
 
@@ -73,7 +73,7 @@ def returnInfo(id, out):
     "goAnnotation.ontologyTerm.namespace",
     "goAnnotation.evidence.code.code"
     )
-    #adding a constraint to limit the results
+    #manipulate the auto-generated code to constrain to a variable
     query.add_constraint("goAnnotation.subject.primaryIdentifier", "=", id, code = "B")
 
     #return dict of information of matching geneID
