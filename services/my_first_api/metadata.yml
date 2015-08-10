@@ -1,8 +1,8 @@
-name: gene-api_main
+name: my_first_api
 description: 'Araport API that serves basic information about genes.'
 version: 0.1
 type: query
-main_module: services.main.main.py
+main_module: services.my_first_api.main.py
 url: https://github.com/Arabidopsis-Information-Portal/Gene-API
 whitelist:
     - https://apps.araport.org
