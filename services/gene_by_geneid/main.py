@@ -1,11 +1,14 @@
 import json
 
-#intermine is data service used by thalemine
+#InterMine is a software on Araport that was used to generate the ThaleMine database
+#InterMine documentation: intermine.readthedocs.org
 #auto-generated service code
 from intermine.webservice import Service
 service = Service("https://apps.araport.org/thalemine/service")
 
-#operation
+#function that responds when the URL ends in /search
+#this search operation is supported by the Adama middleware on Araport
+#endpoints of this name are to return certain data of a gene search
 def search(parameter):
     #store input as variables
     searchInput = parameter["Identifier"]
@@ -17,11 +20,14 @@ def search(parameter):
     else:
         print json.dumps(returnInfo(searchInput,prefOutInput))
 
-#operation
+#function that responds when the URL ends in /list
+#this list operation is supported by the Adama middleware on Araport
+#endpoints of this name are to return a list of values that can be used as parameters for the /search endpoint
 def list(parameter):
-    #auto-generated service code
+    #auto-generated query code
     queryList = service.new_query("Gene")
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
+    
     queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
 
     for row in queryList.rows():
@@ -29,7 +35,6 @@ def list(parameter):
         org['locus_id'] = row["primaryIdentifier"]
         print json.dumps(org)
         print '---'
-
     return
 
 #returns information for all fields for specfic geneID

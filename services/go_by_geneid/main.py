@@ -1,6 +1,7 @@
 import json
 
-#intermine is data service used by thalemine
+#InterMine is a software on Araport that was used to generate the ThaleMine database
+#InterMine documentation: intermine.readthedocs.org
 #auto-generated service code
 from intermine.webservice import Service
 service = Service("https://apps.araport.org/thalemine/service")
@@ -19,7 +20,7 @@ def search(parameter):
 
 #operation
 def list(parameter):
-    #auto-generated service code
+    #auto-generated query code
     queryList = service.new_query("Gene")
     queryList.add_view("primaryIdentifier", "chromosomeLocation.end", "chromosomeLocation.start")
     queryList.add_constraint("chromosome.primaryIdentifier", "IS NOT NULL", code = "A")
