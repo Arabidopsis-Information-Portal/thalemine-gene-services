@@ -1,9 +1,9 @@
 name: gene_by_geneid
 description: 'Araport API that serves chromosome information about genes.'
-version: 1.0
+version: 0.2
 type: query
 main_module: services.gene_by_geneid.main.py
-timeout: 90
+timeout: 120
 url: https://apps.araport.org
 whitelist:
     - apps.araport.org
