@@ -22,7 +22,7 @@ endpoints:
         required: true
         default: "AT4G34260"
       - name: Output
-        description: "Which GO information to return. Select "all" to return all GO information."
+        description: "Which GO information to return. Select 'all' to return all GO information."
         type: string
         required: true
         default: "all"

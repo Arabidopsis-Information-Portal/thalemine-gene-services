@@ -22,7 +22,7 @@ endpoints:
         required: true
         default: "AT4G34260"
       - name: Output
-        description: "Which chromosome information to return. Select "all" to return all chromosome information."
+        description: "Which chromosome information to return. Select 'all' to return all chromosome information."
         type: string
         required: true
         default: "all"
