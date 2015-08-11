@@ -3,7 +3,7 @@ description: 'Araport API that serves chromosome information about genes.'
 version: 1.0
 type: query
 main_module: services.gene_by_geneid.main.py
-timeout: 120
+timeout: 90
 url: https://apps.araport.org
 whitelist:
     - apps.araport.org
