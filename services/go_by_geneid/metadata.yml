@@ -1,6 +1,6 @@
 name: go_by_geneid
 description: 'Araport API that serves GO information about genes.'
-version: 0.2
+version: 1.0
 type: query
 main_module: services.go_by_geneid.main.py
 timeout: 120
