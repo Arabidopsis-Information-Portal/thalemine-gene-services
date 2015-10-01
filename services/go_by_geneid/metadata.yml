@@ -1,3 +1,5 @@
+---
+
 name: go_by_geneid
 description: 'Araport API that serves GO information about genes.'
 version: 1.1
@@ -5,6 +7,7 @@ type: query
 main_module: services.go_by_geneid.main.py
 timeout: 120
 url: https://apps.araport.org
+validate_request: true
 whitelist:
     - apps.araport.org
 tags:
@@ -36,8 +39,19 @@ endpoints:
     description: "Returns a list of locus IDs which have GO information."
 requirements:
   - intermine
+
 authors:
   - name: Iniyan Chezhian
     email: ichezhia@jcvi.org
     sponsor_organization: JCVI
     sponsor_uri: http://www.jcvi.org/
+
+sources:
+    - title: ThaleMine
+      description: Intermine-based information warehouse containing essential Arabidopsis Col-0 data sets
+      language: en-us
+      sponsor_organization_name: J. Craig Venter Institute
+      sponsor_uri: http://www.jcvi.org/
+      provider_name: Christopher D. Town
+      provider_email: cdtown@jcvi.org
+      uri: https://apps.araport.org/thalemine/
