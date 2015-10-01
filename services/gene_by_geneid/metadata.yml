@@ -1,6 +1,6 @@
 name: gene_by_geneid
 description: 'Araport API that serves chromosome information about genes.'
-version: 1.0
+version: 1.1
 type: query
 main_module: services.gene_by_geneid.main.py
 timeout: 120
