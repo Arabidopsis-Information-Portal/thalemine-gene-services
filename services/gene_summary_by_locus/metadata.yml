@@ -14,6 +14,10 @@ authors:
     email: erik@jcvi.org
     sponsor_organization: JCVI
     sponsor_uri: http://www.jcvi.org
+  - name: Iniyan Chezhian
+    email: ichezhia@jcvi.org
+    sponsor_organization: JCVI
+    sponsor_uri: http://www.jcvi.org
 
 type: query
 main_module: services.gene_summary_by_locus.main.py
