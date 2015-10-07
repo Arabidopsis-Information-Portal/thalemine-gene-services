@@ -38,7 +38,7 @@ endpoints:
             - name: locus
               description: AGI Gene Locus identifier
               type: string
-              pattern: "AT[1-5MC]G[0-9]{5,5}"
+              pattern: '^AT[1-5MC]G[0-9]{5,5}$'
               required: true
               default: AT1G65480
 
