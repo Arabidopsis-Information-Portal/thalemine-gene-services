@@ -23,6 +23,9 @@ def search(args):
     # set the constraint value(s)
     query.add_constraint("primaryIdentifier", "=", locus, code = "A")
 
+    # outer join on synonyms
+    query.outerjoin("synonyms")
+
     # loop over rows of data to build the JSON object
     synonyms = []
     found = False
