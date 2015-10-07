@@ -25,6 +25,7 @@ def search(args):
 
     # loop over rows of data to build the JSON object
     synonyms = []
+    found = False
     for row in query.rows():
         gene_id = row["primaryIdentifier"]
         symbol = row["symbol"]
@@ -38,25 +39,27 @@ def search(args):
         chromosome_end = row["chromosomeLocation.end"]
         strand = row["chromosomeLocation.strand"]
         synonyms.append(row["synonyms.value"])
+        found = True
 
-    record = {
-        'class': 'locus_property',
-        'source_text_description': 'ThaleMine Gene Summary',
-        'locus': gene_id,
-        'symbol': symbol,
-        'name': name,
-        'brief_description': brief_description,
-        'computational_description': computational_description,
-        'curator_summary': curator_summary,
-        'length': length,
-        'location': location,
-        'chromosome_start': chromosome_start,
-        'chromosome_end': chromosome_end,
-        'strand': strand,
-        'synonyms': synonyms
-    }
-    print json.dumps(record, indent=2)
-    print '---'
+    if found:
+        record = {
+            'class': 'locus_property',
+            'source_text_description': 'ThaleMine Gene Summary',
+            'locus': gene_id,
+            'symbol': symbol,
+            'name': name,
+            'brief_description': brief_description,
+            'computational_description': computational_description,
+            'curator_summary': curator_summary,
+            'length': length,
+            'location': location,
+            'chromosome_start': chromosome_start,
+            'chromosome_end': chromosome_end,
+            'strand': strand,
+            'synonyms': synonyms
+        }
+        print json.dumps(record, indent=2)
+        print '---'
 
 def list(args):
     # get a new query on the class (table) from the model
