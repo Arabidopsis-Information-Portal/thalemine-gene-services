@@ -40,8 +40,14 @@ def search(args):
         location = row["chromosome.primaryIdentifier"]
         chromosome_start = row["chromosomeLocation.start"]
         chromosome_end = row["chromosomeLocation.end"]
-        strand = row["chromosomeLocation.strand"]
-        synonyms.append(row["synonyms.value"])
+        strand = ''
+        if row["chromosomeLocation.strand"]:
+            if int(row["chromosomeLocation.strand"]) > 0:
+                strand = '+'
+            else:
+                strand = '-'
+        if row["synonyms.value"]:
+            synonyms.append(row["synonyms.value"])
         found = True
 
     if found:
