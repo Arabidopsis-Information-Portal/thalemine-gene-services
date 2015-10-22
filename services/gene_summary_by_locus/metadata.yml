@@ -2,7 +2,7 @@
 
 name: gene_summary_by_locus
 description: Given an AGI locus identifier return summary information about a gene from ThaleMine.
-version: 0.1
+version: 0.2
 tags:
     - arabidopsis
     - gene

@@ -15,7 +15,7 @@ def search(args):
     query = service.new_query("Gene")
 
     # views specify the output columns
-    query.add_view("primaryIdentifier", "symbol", "name", "briefDescription",
+    query.add_view("primaryIdentifier", "symbol", "name", "briefDescription", "isObsolete",
                    "computationalDescription", "curatorSummary", "length",
                    "chromosome.primaryIdentifier", "chromosomeLocation.end",
                    "chromosomeLocation.start", "chromosomeLocation.strand", "synonyms.value")
@@ -34,6 +34,7 @@ def search(args):
         symbol = row["symbol"]
         name = row["name"]
         brief_description = row["briefDescription"]
+        is_obsolete = row["isObsolete"]
         computational_description = row["computationalDescription"]
         curator_summary = row["curatorSummary"]
         length = row["length"]
@@ -58,6 +59,7 @@ def search(args):
             'symbol': symbol,
             'name': name,
             'brief_description': brief_description,
+            'is_obsolete': is_obsolete,
             'computational_description': computational_description,
             'curator_summary': curator_summary,
             'length': length,
