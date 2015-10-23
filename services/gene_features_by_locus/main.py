@@ -21,7 +21,8 @@ def search(args):
         "overlappingFeatures.chromosomeLocation.end",
         "overlappingFeatures.chromosomeLocation.strand",
         "overlappingFeatures.sequenceOntologyTerm.name",
-        "overlappingFeatures.length"
+        "overlappingFeatures.length",
+        "overlappingFeatures.chromosome.primaryIdentifier"
     )
 
     # set the constraint value(s)
@@ -46,6 +47,7 @@ def search(args):
             'locus': row["primaryIdentifier"],
             'feature_id': row["overlappingFeatures.primaryIdentifier"],
             'length': row["overlappingFeatures.length"],
+            'location': row["overlappingFeatures.chromosome.primaryIdentifier"],
             'chromosome_start': row["overlappingFeatures.chromosomeLocation.start"],
             'chromosome_end': row["overlappingFeatures.chromosomeLocation.end"],
             'strand': strand,
