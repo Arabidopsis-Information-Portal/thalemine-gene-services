@@ -1,0 +1,55 @@
+---
+
+name: gene_features_by_locus
+description: Given an AGI locus identifier return the overlapping features of a gene from ThaleMine.
+version: 0.1
+tags:
+    - arabidopsis
+    - gene
+    - ThaleMine
+    - InterMine
+
+authors:
+  - name: Erik Ferlanti
+    email: erik@jcvi.org
+    sponsor_organization: JCVI
+    sponsor_uri: http://www.jcvi.org
+  - name: Iniyan Chezhian
+    email: ichezhia@jcvi.org
+    sponsor_organization: JCVI
+    sponsor_uri: http://www.jcvi.org
+
+type: query
+main_module: services.gene_features_by_locus.main.py
+url: https://apps.araport.org/thalemine/service
+validate_request: true
+timeout: 60
+whitelist:
+    - apps.araport.org
+icon: araport.png
+requirements:
+    - intermine
+
+endpoints:
+    /search:
+        description: Return the overlapping features from ThaleMine given a specific gene locus.
+        parameters:
+            - name: locus
+              description: AGI Gene Locus identifier
+              type: string
+              pattern: '^AT[1-5MC]G[0-9]{5,5}$'
+              required: true
+              default: AT1G65480
+
+    /list:
+        description: Return a list of valid AGI Gene Locus indentifiers
+
+sources:
+    - title: ThaleMine
+      description: Intermine-based information warehouse containing essential Arabidopsis Col-0 data sets
+      language: en-us
+      sponsor_organization_name: J. Craig Venter Institute
+      sponsor_uri: http://www.jcvi.org/
+      provider_name: Christopher D. Town
+      provider_email: cdtown@jcvi.org
+      uri: https://apps.araport.org/thalemine/
