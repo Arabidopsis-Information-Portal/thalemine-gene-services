@@ -34,34 +34,113 @@ $ http "https://api.araport.org/community/v0.3/araport/gene_summary_by_locus_v0.
 }
 ```
 
-## gene_ontology_by_locus
-Given an AGI locus identifier return Gene ontology information from ThaleMine.
+## gene_history_by_locus
+Given an AGI locus identifier return history information about a gene from ThaleMine.
 ```
-$ http "https://api.araport.org/community/v0.3/araport/gene_ontology_by_locus_v0.1/search?locus=AT1G65480" Authorization:"Bearer $TOKEN"
+$ http "https://api.araport.org/community/v0.3/araport/gene_history_by_locus_v0.1/search?locus=AT1G65480" Authorization:"Bearer $TOKEN"
 {
     "metadata": {
-        "time_in_main": 0.48909521102905273
+        "time_in_main": 0.4304320812225342
     },
     "result": [
         {
             "class": "locus_property",
-            "dataset_name": "GO Annotation from TAIR",
-            "dataset_version": "03/31/2015",
-            "description": "A change from the vegetative to the reproductive phase as a result of detection of, or exposure to, a period of light or dark of a given length. The length of the period of light or dark required to initiate the change is set relative to a particular duration known as the 'critical day length'. The critical day length varies between species.",
-            "evidence_code": "IEP",
+            "date": "20010104",
+            "loci_involved": [],
             "locus": "AT1G65480",
-            "name": "photoperiodism, flowering",
+            "operation": "new",
+            "source": "TIGR",
+            "source_description": null,
+            "source_text_description": "ThaleMine Gene History",
+            "source_url": null
+        },
+        {
+            "class": "locus_property",
+            "date": "20020419",
+            "loci_involved": [],
+            "locus": "AT1G65480",
+            "operation": "new",
+            "source": "MIPS",
+            "source_description": null,
+            "source_text_description": "ThaleMine Gene History",
+            "source_url": null
+        }
+    ],
+    "status": "success"
+}
+```
+
+## gene_features_by_locus
+Given an AGI locus identifier return the overlapping features of a gene from ThaleMine.
+```
+$ http "https://api.araport.org/community/v0.3/araport/gene_features_by_locus_v0.2/search?locus=AT1G65480" Authorization:"Bearer $TOKEN"
+{
+    "metadata": {
+        "time_in_main": 0.45671606063842773
+    },
+    "result": [
+        {
+            "chromosome_end": 24334499,
+            "chromosome_start": 24331373,
+            "class": "locus_property",
+            "feature_id": "AT1G65480 0.5kb downstream",
+            "feature_type": "",
+            "length": 3127,
+            "location": "Chr1",
+            "locus": "AT1G65480",
+            "source_text_description": "ThaleMine Gene Feature",
+            "strand": "+"
+        },
+        {
+            "chromosome_end": 24333999,
+            "chromosome_start": 24330873,
+            "class": "locus_property",
+            "feature_id": "AT1G65480 0.5kb upstream",
+            "feature_type": "",
+            "length": 3127,
+            "location": "Chr1",
+            "locus": "AT1G65480",
+            "source_text_description": "ThaleMine Gene Feature",
+            "strand": "+"
+        },
+        ...
+    ],
+    "status": "success"
+}
+```
+
+## gene_ontology_by_locus
+Given an AGI locus identifier return Gene ontology information from ThaleMine.
+```
+$ http "https://api.araport.org/community/v0.3/araport/gene_ontology_by_locus_v0.2/search?locus=AT1G65480" Authorization:"Bearer $TOKEN"
+{
+    "metadata": {
+        "time_in_main": 0.45537710189819336
+    },
+    "result": [
+        {
+            "class": "locus_property",
+            "dataset_name": "GO Annotation from UniProt",
+            "dataset_version": "06/30/2015",
+            "description": "The process whose specific outcome is the progression of the flower over time, from its formation to the mature structure. The flower is the reproductive structure in a plant, and its development begins with the transition of the vegetative or inflorescence meristem into a floral meristem.",
+            "evidence_codes": [
+                "IEA"
+            ],
+            "locus": "AT1G65480",
+            "name": "flower development",
             "namespace": "biological_process",
             "source_text_description": "ThaleMine GO record"
         },
         {
             "class": "locus_property",
-            "dataset_name": "GO Annotation from TAIR",
-            "dataset_version": "03/31/2015",
-            "description": "A change from the vegetative to the reproductive phase as a result of detection of, or exposure to, a period of light or dark of a given length. The length of the period of light or dark required to initiate the change is set relative to a particular duration known as the 'critical day length'. The critical day length varies between species.",
-            "evidence_code": "RCA",
+            "dataset_name": "GO Annotation from UniProt",
+            "dataset_version": "06/30/2015",
+            "description": "The process in which relatively unspecialized cells, e.g. embryonic or regenerative cells, acquire specialized structural and/or functional features that characterize the cells, tissues, or organs of the mature organism or some other relatively stable phase of the organism's life history. Differentiation includes the processes involved in commitment of a cell to a specific fate and its subsequent development to the mature state.",
+            "evidence_codes": [
+                "IEA"
+            ],
             "locus": "AT1G65480",
-            "name": "photoperiodism, flowering",
+            "name": "cell differentiation",
             "namespace": "biological_process",
             "source_text_description": "ThaleMine GO record"
         },
